@@ -9,7 +9,8 @@ for i, equation in enumerate(puzzle):
 valid: list[int] = []
 for i, equation in enumerate(equations):
 	print(i/len(equations))
-	cmbs: typing.Iterable[Op] = generate_combinations(create_both_ops(equation[1][0], equation[1][1], ["*", "+"]), equation[1][2:], ["*", "+"])
+	cmbs: typing.Iterable[Op] = generate_combinations(create_both_ops(equation[1][0], equation[1][1], ["*", "+", "||"]), equation[1][2:], ["*", "+", "||"])
 	if len([equation[0] for c in cmbs if c.eval() == equation[0]])>0:
 		valid.append(equation[0])
+
 print(sum(valid))
